@@ -18,7 +18,7 @@ export class Matrix {
     private transpose(): void {
         for (let i = 0; i < this._matrix.length; i++) {
             for (let j = i; j < this._matrix[0].length; j++) {
-                let temp = this._matrix[j][i];
+                const temp = this._matrix[j][i];
                 this._matrix[j][i] = this._matrix[i][j];
                 this._matrix[i][j] = temp;
             }
@@ -41,7 +41,7 @@ export class Matrix {
     }
 
     private validate(): void {
-        let n = this._matrix.length;
+        const n = this._matrix.length;
 
         for (let row of this._matrix) {
             if (row.length !== n) {
@@ -49,8 +49,11 @@ export class Matrix {
             }
 
             for (let no of row) {
+                if (!Number.isInteger(no)) {
+                    throw new Error("Value is invalid, it should be: 0 < number < 255");
+                }
                 if (no < 0 || no > 255) {
-                    throw new Error("Value is invalid");
+                    throw new Error("Value is invalid, it should be: 0 < number < 255");
                 }
             }
         }
@@ -59,7 +62,7 @@ export class Matrix {
     public rotate(n: number): Array<Array<number>> {
         this.validate();
 
-        let times = n % 4;
+        const times = n % 4;
 
         if (times === 1) {
             this.rotate90Clockwise();

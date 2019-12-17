@@ -1,34 +1,34 @@
-import { Matrix } from "../../src/Matrix/matrix";
+import { Matrix } from "../../src/matrix/matrix";
 
 test("Invalid square matrix should throw Error", () => {
-    let input = [
+    const input = [
         [1, 2, 3],
         [4, 5]
     ];
-    let matrix = new Matrix(input);
+    const matrix = new Matrix(input);
 
     expect(() => matrix.rotate(1)).toThrow("Square matrix is required");
 });
 
 test("Invalid value in matrix should throw Error", () => {
-    let input = [
+    const input = [
         [1, 256],
         [4, 5]
     ];
-    let matrix = new Matrix(input);
+    const matrix = new Matrix(input);
 
-    expect(() => matrix.rotate(1)).toThrow("Value is invalid");
+    expect(() => matrix.rotate(1)).toThrow("Value is invalid, it should be: 0 < number < 255");
 });
 
 test("Rotation once successfully", () => {
-    let input = [
+    const input = [
         [1, 2, 3, 4],
         [5, 6, 7, 8],
         [9, 10, 11, 12],
         [13, 14, 15, 16]
     ];
-    let matrix = new Matrix(input);
-    let expectedResult = [
+    const matrix = new Matrix(input);
+    const expectedResult = [
         [13, 9, 5, 1],
         [14, 10, 6, 2],
         [15, 11, 7, 3],
@@ -39,13 +39,13 @@ test("Rotation once successfully", () => {
 });
 
 test("Rotation twice successfully", () => {
-    let input = [
+    const input = [
         [1, 2, 3, 4],
         [5, 6, 7, 8],
         [9, 10, 11, 12],
         [13, 14, 15, 16]
     ];
-    let matrix = new Matrix(input);
+    const matrix = new Matrix(input);
     const expectedResult = [
         [16, 15, 14, 13],
         [12, 11, 10, 9],
@@ -57,13 +57,13 @@ test("Rotation twice successfully", () => {
 });
 
 test("Rotation three times successfully", () => {
-    let input = [
+    const input = [
         [1, 2, 3, 4],
         [5, 6, 7, 8],
         [9, 10, 11, 12],
         [13, 14, 15, 16]
     ];
-    let matrix = new Matrix(input);
+    const matrix = new Matrix(input);
     const expectedResult = [
         [4, 8, 12, 16],
         [3, 7, 11, 15],
